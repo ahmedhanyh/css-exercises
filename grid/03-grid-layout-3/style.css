@@ -5,6 +5,13 @@
 
 .container {
   text-align: center;
+  box-sizing: border-box;
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-template-rows: 100px 50px 5fr 50px;
+  gap: 4px;
 }
 
 .container div {
@@ -17,15 +24,37 @@
 
 .header {
   background-color: #393f4d;
+  grid-column: 1 / -1;
+  grid-row: 1;
+
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  align-items: center;
+}
+
+.logo {
+  justify-self: start;
+}
+
+.header ul {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
 }
 
 .menu ul,
 .menu li {
+  list-style-type: none;
   font-size: 16px;
 }
 
 .sidebar {
   background-color: #FF7755;
+  grid-column: 1;
+  grid-row: 2 / -2;
+  display: grid;
+  grid-template-columns: 1fr;  /* this is unnecessary as items will stretch to the whole width according to auto placement rules */
+  grid-template-rows: repeat(4, 1fr);
+  gap: 48px;
 }
 
 .sidebar .photo {
@@ -34,6 +63,9 @@
   font-size: 12px;
   font-weight: normal;
   border-radius: 10px;
+  display: grid;
+  /* place-items is unnecessary as text is already centered horizontally, align-items is enough */
+  place-items: center;
 }
 
 
@@ -42,10 +74,22 @@
   color: black;
   font-size: 16px;
   font-weight: normal;
+  display: grid;
+  /* place-items is unnecessary as text is already centered horizontally, align-items is enough */
+  place-items: center;
 }
 
 .nav {
   background-color: #FF7755;
+  /* placing .nav is unnecessary as it will take the available space automatically */
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.nav ul {
+  list-style-type: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
 }
 
 .nav ul li {
@@ -55,6 +99,13 @@
 
 .article {
   background-color: #bccbde;
+  /* placing .article is unnecessary as it will take the available space automatically  */
+  grid-column: 2;
+  grid-row: 3;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-auto-rows: minmax(200px, 1fr);
+  gap: 15px;
 }
 
 .article p {
@@ -79,10 +130,16 @@
 .card .title {
   font-size: 18px;
   text-align: center;
+  margin-bottom: 12px;
 }
 
 .footer {
   background-color: #393f4d;
+  grid-column: 1 / -1;
+  grid-row: -2;
+  /* this is unnecessary */
+  display: grid;
+  place-items: center;
 }
 
 .footer p {
